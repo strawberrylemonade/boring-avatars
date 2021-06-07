@@ -1,5 +1,6 @@
 import * as React from "react"
-import { getNumber, getUnit, getBoolean, getRandomColor, getContrast } from '../utilities'
+import { getNumber, getUnit, getBoolean, getRandomColor, getContrast } from '../utilities';
+import { v4 } from 'uuid';
 
 const SIZE = 36
 
@@ -34,7 +35,8 @@ function generateData(name, colors) {
 }
 
 const AvatarBeam = ( props ) => {
-  const data = generateData(props.name, props.colors)
+  const data = generateData(props.name, props.colors);
+  const id = v4();
 
   return (
     <svg
@@ -46,7 +48,7 @@ const AvatarBeam = ( props ) => {
       {...props}
     >
       <mask
-        id="mask__beam"
+        id={`mask__beam__${id}`}
         maskUnits="userSpaceOnUse"
         x={0}
         y={0}
@@ -60,7 +62,7 @@ const AvatarBeam = ( props ) => {
           fill="white"
         />
       </mask>
-      <g mask="url(#mask__beam)" fill="transparent">
+      <g mask={`url(#mask__beam__${id})`} fill="transparent">
         <rect
           width={SIZE}
           height={SIZE}

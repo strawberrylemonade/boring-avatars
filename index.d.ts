@@ -1,4 +1,4 @@
-declare module "boring-avatars" {
+declare module "@strawberrylemonade/boring-avatars" {
   export interface AvatarProps {
     size?: number | string;
     name?: string;
